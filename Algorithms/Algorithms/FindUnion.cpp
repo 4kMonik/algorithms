@@ -12,9 +12,9 @@ algorithms::findUnion::findUnion(int n) : root(n), rank(n)
 
 int algorithms::findUnion::find(int elem)
 {
-	while (elem != root[elem])
-		elem = root[elem];
-	return elem;
+	if (elem == root[elem])
+		return elem;
+	return root[elem] = find(root[elem]);
 }
 
 void algorithms::findUnion::unionSet(int elem1, int elem2)
