@@ -1,17 +1,24 @@
 ﻿#include <iostream>
 
 #include "Sort.h"
+#include "FindUnion.h"
 
 using namespace std;
 using namespace algorithms;
 
 int main()
 {
-	int N = 10;
-	int* A = new int[N]{7, 4, 1, 8, 2, 3, 9, 0, 5, 6};
-	heap_sort(A, N);
-	for (int i = 0; i < N; i++)
-		cout << A[i] << " ";
+	findUnion uni(9);
+	uni.unionSet(0, 1);
+	uni.unionSet(1, 2);
+	uni.unionSet(1, 3);
+	uni.unionSet(4, 5);
+	uni.unionSet(4, 6);
+	uni.unionSet(1, 5);
+	cout << uni.connected(3, 6);
+
+
+	
 
 	return 0;
 }
