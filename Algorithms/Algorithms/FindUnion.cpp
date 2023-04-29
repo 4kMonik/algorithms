@@ -22,7 +22,17 @@ void algorithms::findUnion::unionSet(int elem1, int elem2)
 	int root1 = find(elem1);
 	int root2 = find(elem2);
 	if (root1 != root2)
-		root[root2] = root1;
+	{
+		if (rank[root1] > rank[root2])
+			root[root2] = root1;
+		else if (rank[root1] < rank[root2])
+			root[root1] = root2;
+		else
+		{
+			root[root2] = root1;
+			rank[root1]++;
+		}
+	}
 }
 
 bool algorithms::findUnion::connected(int elem1, int elem2)

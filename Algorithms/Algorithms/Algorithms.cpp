@@ -8,14 +8,21 @@ using namespace algorithms;
 
 int main()
 {
-	findUnion uni(9);
-	uni.unionSet(0, 1);
-	uni.unionSet(1, 2);
-	uni.unionSet(1, 3);
-	uni.unionSet(4, 5);
-	uni.unionSet(4, 6);
-	uni.unionSet(1, 5);
-	cout << uni.connected(3, 6);
+	cout << boolalpha;
+	findUnion uf(10);
+	// 1-2-5-6-7 3-8-9 4
+	uf.unionSet(1, 2);
+	uf.unionSet(2, 5);
+	uf.unionSet(5, 6);
+	uf.unionSet(6, 7);
+	uf.unionSet(3, 8);
+	uf.unionSet(8, 9);
+	cout << uf.connected(1, 5) << endl;  // true
+	cout << uf.connected(5, 7) << endl;  // true
+	cout << uf.connected(4, 9) << endl;  // false
+	// 1-2-5-6-7 3-8-9-4
+	uf.unionSet(9, 4);
+	cout << uf.connected(4, 9) << endl;  // true
 
 
 	
